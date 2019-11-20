@@ -1,6 +1,6 @@
 FROM subparticles/sdk-builder-base:latest
 
-RUN sdk install java 8.0.222-zulu
+RUN sdk install java 8.0.232-zulu
 RUN sdk install gradle 5.4.1
 
 USER root
