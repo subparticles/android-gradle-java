@@ -1,15 +1,20 @@
 FROM subparticles/sdk-builder-base:latest
 
-RUN sdk install java 8.0.265-zulu
+RUN sdk update
+RUN sdk install java 11.0.11-zulu
 RUN sdk install gradle 6.6.1
 
 USER root
-RUN curl -L https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -o sdk-tools-linux.zip
-RUN unzip -o -q sdk-tools-linux.zip -d /opt/sdk-tools-linux
-RUN chown -R user:user /opt/sdk-tools-linux
+RUN curl -L https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip -o commandlinetools-linux.zip
+RUN mkdir -p /opt/Android/Sdk
+RUN unzip -o -q commandlinetools-linux.zip -d /opt/Android/Sdk/cmdline-tools
+RUN mv /opt/Android/Sdk/cmdline-tools/cmdline-tools /opt/Android/Sdk/cmdline-tools/tools
 
-ENV ANDROID_HOME=/opt/sdk-tools-linux
-ENV PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
+RUN chown -R user:user /opt/Android
+
+ENV ANDROID_HOME=/opt/Android/Sdk
+ENV ANDROID_SDK_ROO=$ANDROID_HOME
+ENV PATH="$PATH:$ANDROID_HOME/cmdline-tools/tools:$ANDROID_HOME/cmdline-tools/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools"
 
 USER user
 RUN yes | sdkmanager --licenses
