@@ -19,5 +19,5 @@ ENV PATH="$PATH:$ANDROID_HOME/cmdline-tools/tools:$ANDROID_HOME/cmdline-tools/to
 USER user
 RUN yes | sdkmanager --licenses
 RUN sdkmanager --update
-RUN sdkmanager --install "platforms;android-30" "build-tools;29.0.3" "extras;google;m2repository" "extras;android;m2repository"
+RUN sdkmanager --install "platforms;android-30" "build-tools;30.0.2" "extras;google;m2repository" "extras;android;m2repository"
 RUN sdkmanager --install "platform-tools"
