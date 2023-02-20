@@ -1,8 +1,8 @@
 FROM subparticles/sdk-builder-base:latest
 
 RUN sdk update
-RUN sdk install java 11.0.14-zulu
-RUN sdk install gradle 7.3.3
+RUN sdk install java 11.0.18-zulu
+RUN sdk install gradle 7.5.1
 
 USER root
 RUN curl -L https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip -o commandlinetools-linux.zip
