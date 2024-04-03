@@ -2,7 +2,7 @@ FROM subparticles/sdk-builder-base:latest
 
 RUN sdk update
 RUN sdk install java 17.0.5-zulu
-RUN sdk install gradle 7.5.1
+RUN sdk install gradle 8.4
 
 USER root
 RUN curl -L https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip -o commandlinetools-linux.zip
@@ -19,5 +19,5 @@ ENV PATH="$PATH:$ANDROID_HOME/cmdline-tools/tools:$ANDROID_HOME/cmdline-tools/to
 USER user
 RUN yes | sdkmanager --licenses
 RUN sdkmanager --update
-RUN sdkmanager --install "platforms;android-30" "build-tools;30.0.2" "extras;google;m2repository" "extras;android;m2repository"
+RUN sdkmanager --install "platforms;android-34" "build-tools;30.0.0" "extras;google;m2repository" "extras;android;m2repository"
 RUN sdkmanager --install "platform-tools"
