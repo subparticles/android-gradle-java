@@ -1,7 +1,7 @@
 FROM subparticles/sdk-builder-base:latest
 
 RUN sdk update
-RUN sdk install java 17.0.14-zulu
+RUN sdk install java 21.0.10-zulu
 RUN sdk install gradle 8.14.3
 
 USER root
